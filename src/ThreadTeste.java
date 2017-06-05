@@ -51,7 +51,7 @@ public class ThreadTeste {
             }
         };
         new Thread(run1).start();
-        //new Thread(run2).start();
+        new Thread(run2).start();
 
     }
 

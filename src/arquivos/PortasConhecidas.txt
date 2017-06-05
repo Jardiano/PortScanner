@@ -1,51 +1,44 @@
-# FTP
+#FTP
 21
 
-# SSH
+#SSH
 22
 
-# Telnet
+#Telnet
 23
 
-# SMTP
+#SMTP
 25
 
-# DNS
+#DNS
 53
 
-# Name Sever
+#Name Sever
 42
 
-# HTTP
+#HTTP
 80
 
-# POP3
+#POP3
 110
 
-# SFTP
+#SFTP
 115
 
-# IMAP4
+#IMAP4
 143
 
-# SNMP
+#SNMP
 161
 
-# IPX
+#IPX
 213
 
 #LDAP
 389
 
-# HTTPS
+#HTTPS
 443
 
 #RPC
 530
-
-
-
-
-
-
-

@@ -1,58 +1,44 @@
-# Skype
+#Skype
 81
 
-# Microsoft-DS
+#Microsoft-DS
 445
 
-# Socks
+#Socks
 1080
 
-# SQL Services
+#SQL Services
 118
 
-# Microsoft SQL Database system (SQL Server)
+#Microsoft SQL Database system (SQL Server)
 1433
 
-
-# Monitor do Microsoft SQL
+#Monitor do Microsoft SQL
 1434
 
-# Oracle Database
+#Oracle Database
 1521
 
-# Kermit
+#Kermit
 1649
 
-# Muti-transmissão MTFTP
+#Muti-transmissÃ£o MTFTP
 1759
 
-# Licensa Daemon
+#Licensa Daemon
 1986
 
-# Gdp - Protocolo da descoberta da porta de comunicação CISCO
+#Gdp - Protocolo da descoberta da porta de comunicaÃ§Ã£o CISCO
 1997
 
-# nfs - Sistema de arquivos de rede
+#nfs - Sistema de arquivos de rede
 2049
 
-# Cliente Zephyr
+#Cliente Zephyr
 2103
 
-# Mysql
+#Mysql
 3306
 
-# Serviço de autenticação Kerberos
+#Serviï¿½o de autenticaÃ§Ã£o Kerberos
 7004
-
-
-
-
-
-
-
-
-
-
-
-
-

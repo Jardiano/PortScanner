@@ -67,11 +67,14 @@ public class Port {
         int openPorts = 0;
         List<Integer> lista = convertePortasLista(listaPortas);
         for (final Future<ScanResult> f : futures) {
-            if (f.get().isOpen()&& lista.contains(f.get().getPort())) {
+            if (f.get().isOpen() && lista.contains(f.get().getPort())) {
                 openPorts++;
-                System.out.print(f.get().getPort() + " Ativa " );
-                System.out.println("Quantidade de portas abertas "+openPorts);
-                
+                int index = lista.indexOf(f.get().getPort());
+                System.out.println(index);
+                System.out.println(f.get().getPort() + " CServiço: " + armazPortConhe[index]);
+                System.out.println(f.get().getPort() + " RServiço: " + armazPortReg[index]);
+                //System.out.println("Quantidade de portas abertas "+openPorts);
+
             }
         }
         System.out.println("There are " + openPorts + " open ports on host " + ip + " (probed with a timeout of "
@@ -80,6 +83,8 @@ public class Port {
 
     final String PORTAS_CONHECIDAS = System.getProperty("user.dir") + "\\src\\arquivos\\PortasConhecidas.txt";
     final String PORTAS_REGISTRADAS = System.getProperty("user.dir") + "\\src\\arquivos\\PortasRegistradas.txt";
+    String[] armazPortConhe = new String[30];
+    String[] armazPortReg = new String[30];
 
     /**
      * Método para leitura do arquivo de portas conhecidas.
@@ -91,14 +96,19 @@ public class Port {
     public int[] ArmazPortConhe() throws FileNotFoundException, IOException {
         FileReader arquivo = new FileReader(PORTAS_CONHECIDAS);
         BufferedReader buffer = new BufferedReader(arquivo);
-        int[] portasConhecidas = new int[15];
+        int[] portasConhecidas = new int[30];
         int i = 0;
         while (buffer.ready()) {
-            if (!buffer.readLine().contains("#")) {
+            String linha = buffer.readLine();
+            if (linha.contains("#")) {
+                //System.out.println(linha);
+                armazPortConhe[i] = linha;
                 continue;
             } else {
-                String linha = buffer.readLine();
-                portasConhecidas[i] = Integer.parseInt(linha);
+                if (!linha.trim().isEmpty()) {
+                    portasConhecidas[i] = Integer.parseInt(linha);
+                    //System.out.println(linha);
+                }
                 i++;
             }
         }
@@ -116,14 +126,19 @@ public class Port {
     public int[] ArmazPortReg() throws FileNotFoundException, IOException {
         FileReader arquivo = new FileReader(PORTAS_REGISTRADAS);
         BufferedReader buffer = new BufferedReader(arquivo);
-        int[] portasRegistradas = new int[15];
+        int[] portasRegistradas = new int[30];
         int i = 0;
         while (buffer.ready()) {
-            if (!buffer.readLine().contains("#")) {
+            String linha = buffer.readLine();
+            if (linha.contains("#")) {
+                //System.out.println(linha);
+                armazPortReg[i] = linha;
                 continue;
             } else {
-                String linha = buffer.readLine();
-                portasRegistradas[i] = Integer.parseInt(linha);
+                if (!linha.trim().isEmpty()) {
+                    portasRegistradas[i] = Integer.parseInt(linha);
+                    //System.out.println(linha);
+                }
                 i++;
             }
         }
