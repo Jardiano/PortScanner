@@ -23,7 +23,7 @@ public class ThreadTeste {
             public void run() {
                 Port port = new Port();
                 try {
-                    port.ScannerPortas(port.ArmazPortConhe());
+                    port.ScannerPortas("127.0.0.1",port.ArmazPortConhe());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadTeste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
@@ -39,7 +39,7 @@ public class ThreadTeste {
             public void run() {
                 Port port = new Port();
                 try {
-                    port.ScannerPortas(port.ArmazPortReg());
+                    port.ScannerPortas("127.0.0.1",port.ArmazPortReg());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadTeste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {

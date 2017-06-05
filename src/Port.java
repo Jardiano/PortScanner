@@ -53,9 +53,9 @@ public class Port {
      * @throws ExecutionException
      * @throws IOException
      */
-    public void ScannerPortas(int[] listaPortas) throws InterruptedException, ExecutionException, IOException {
+    public void ScannerPortas(final String ip,int[] listaPortas) throws InterruptedException, ExecutionException, IOException {
         final ExecutorService es = Executors.newFixedThreadPool(20);
-        final String ip = "127.0.0.1";
+        //final String ip = "127.0.0.1";
         final int timeout = 200;
         final List<Future<ScanResult>> futures = new ArrayList<>();
         for (int port = 1; port <= 65535; port++) {
@@ -70,15 +70,18 @@ public class Port {
             if (f.get().isOpen() && lista.contains(f.get().getPort())) {
                 openPorts++;
                 int index = lista.indexOf(f.get().getPort());
-                System.out.println(index);
-                System.out.println(f.get().getPort() + " CServiço: " + armazPortConhe[index]);
-                System.out.println(f.get().getPort() + " RServiço: " + armazPortReg[index]);
-                //System.out.println("Quantidade de portas abertas "+openPorts);
+                if (armazPortReg[index] == null) {
+                    System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index]);
+                } else {
+                    System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index]);
+                }
 
+                //System.out.println("Quantidade de portas abertas "+openPorts);
             }
         }
-        System.out.println("There are " + openPorts + " open ports on host " + ip + " (probed with a timeout of "
-                + timeout + "ms)");
+        System.out.println("Timeout: " + timeout);
+        //System.out.println("There are " + openPorts + " open ports on host " + ip + " (probed with a timeout of "
+        //      + timeout + "ms)");
     }
 
     final String PORTAS_CONHECIDAS = System.getProperty("user.dir") + "\\src\\arquivos\\PortasConhecidas.txt";
@@ -102,6 +105,7 @@ public class Port {
             String linha = buffer.readLine();
             if (linha.contains("#")) {
                 //System.out.println(linha);
+                linha = linha.substring(1, linha.length());
                 armazPortConhe[i] = linha;
                 continue;
             } else {
@@ -132,6 +136,7 @@ public class Port {
             String linha = buffer.readLine();
             if (linha.contains("#")) {
                 //System.out.println(linha);
+                linha = linha.substring(1, linha.length());
                 armazPortReg[i] = linha;
                 continue;
             } else {
