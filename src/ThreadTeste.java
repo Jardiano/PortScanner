@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,13 +18,14 @@ import java.util.logging.Logger;
 public class ThreadTeste {
 
     public static void main(String[] args) {
-
+        final String ip= JOptionPane.showInputDialog("Digite o IP da máquina que será escaneada");
+        
         Runnable run1 = new Runnable() {
             @Override
             public void run() {
                 Port port = new Port();
                 try {
-                    port.ScannerPortas("127.0.0.1",port.ArmazPortConhe());
+                    port.ScannerPortas(ip,port.ArmazPortConhe());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadTeste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
@@ -39,7 +41,7 @@ public class ThreadTeste {
             public void run() {
                 Port port = new Port();
                 try {
-                    port.ScannerPortas("127.0.0.1",port.ArmazPortReg());
+                    port.ScannerPortas(ip,port.ArmazPortReg());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadTeste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
