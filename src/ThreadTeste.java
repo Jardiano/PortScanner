@@ -1,12 +1,16 @@
-
+/*
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+ /* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -15,9 +19,11 @@ import javax.swing.JOptionPane;
  *
  * @author 314115512
  */
-public class ThreadTeste {
+/*
+public class ThreadTeste extends javax.swing.JFrame {
 
     public static void main(String[] args) {
+        
         final String ip= JOptionPane.showInputDialog("Digite o IP da máquina que será escaneada");
         
         Runnable run1 = new Runnable() {
@@ -25,7 +31,7 @@ public class ThreadTeste {
             public void run() {
                 Port port = new Port();
                 try {
-                    port.ScannerPortas(ip,port.ArmazPortConhe());
+                    port.ScannerPortas(ip,port.ArmazPortConhe(),);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(ThreadTeste.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
@@ -56,5 +62,5 @@ public class ThreadTeste {
         new Thread(run2).start();
 
     }
-
-}
+}    
+*/

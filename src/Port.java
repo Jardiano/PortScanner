@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import javax.swing.JTextArea;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,9 +25,11 @@ import java.util.concurrent.TimeUnit;
  * @author 314115512
  */
 public class Port {
-
+    public String mensagem = "";
+    
     public static Future<ScanResult> portIsOpen(final ExecutorService es, final String ip, final int port,
             final int timeout) {
+        
         return es.submit(new Callable<ScanResult>() {
             @Override
             public ScanResult call() {
@@ -46,11 +49,12 @@ public class Port {
      *
      * @param ip Endereço de ip da máquina que sera escaneada.
      * @param listaPortas Lista de portas que devem ser verificadas
+     * @param resultadoArea
      * @throws InterruptedException
      * @throws ExecutionException
      * @throws IOException
      */
-    public void ScannerPortas(final String ip,int[] listaPortas) throws InterruptedException, ExecutionException, IOException {
+    public void ScannerPortas(final String ip,int[] listaPortas, JTextArea resultadoArea) throws InterruptedException, ExecutionException, IOException {
         final ExecutorService es = Executors.newFixedThreadPool(20);
         //final String ip = "127.0.0.1";
         final int timeout = 200;
@@ -68,19 +72,22 @@ public class Port {
                 openPorts++;
                 int index = lista.indexOf(f.get().getPort());
                 if (armazPortReg[index] == null) {
-                    System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index]);
-                    } else {
-                    System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index]);
+                    //System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index]);
+                    String resultadoParcial = resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index];
+                    resultadoArea.setText(resultadoParcial);
+                } else {
+                    //System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index]);                     
+                    String resultadoParcial= resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index];
+                    resultadoArea.setText(resultadoParcial);
                 }
-
-                //System.out.println("Quantidade de portas abertas "+openPorts);
+                   
+                  
             }
         }
         System.out.println("Timeout: " + timeout);
-        //System.out.println("There are " + openPorts + " open ports on host " + ip + " (probed with a timeout of "
-        //      + timeout + "ms)");
     }
-
+    
+       
     final String PORTAS_CONHECIDAS = System.getProperty("user.dir") + "\\src\\arquivos\\PortasConhecidas.txt";
     final String PORTAS_REGISTRADAS = System.getProperty("user.dir") + "\\src\\arquivos\\PortasRegistradas.txt";
     String[] armazPortConhe = new String[30];
