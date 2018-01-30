@@ -72,16 +72,12 @@ public class Port {
                 openPorts++;
                 int index = lista.indexOf(f.get().getPort());
                 if (armazPortReg[index] == null) {
-                    //System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index]);
-                    String resultadoParcial = resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index];
+                    String resultadoParcial = resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortConhe[index] + "\n";
                     resultadoArea.setText(resultadoParcial);
                 } else {
-                    //System.out.println("Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index]);                     
-                    String resultadoParcial= resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index];
+                    String resultadoParcial= resultadoArea.getText()+ "Porta: "+f.get().getPort() + " Serviço: " + armazPortReg[index] + "\n";
                     resultadoArea.setText(resultadoParcial);
-                }
-                   
-                  
+                }                                
             }
         }
         System.out.println("Timeout: " + timeout);
