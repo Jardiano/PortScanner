@@ -31,7 +31,7 @@ public class IntefaceTP extends javax.swing.JFrame {
         resultadoScanner.setText(" ");
         ScanResultado t = new ScanResultado(ip);
         t.LerDados();
-        t.ScanearPortas(628,632,resultadoScanner); //primeira porta, ultima porta, resultados
+        t.ScanearPortas(1,65500,resultadoScanner); //primeira porta, ultima porta, resultados
        
 }
 

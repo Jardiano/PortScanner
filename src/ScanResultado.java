@@ -152,7 +152,10 @@ public class ScanResultado{
                 resultadoArea.setText(resultadoAreaAux);
             }
         }
-        System.out.println(this.openPorts);
+        resultadoAreaAux=resultadoArea.getText()+"\n"+"Quantidade de portas abertas: "+this.openPorts+"\nFinalizou";
+        resultadoArea.setText(resultadoAreaAux);
+        
+        //System.out.println(this.openPorts);
     }
     
 }
