@@ -34,6 +34,10 @@ public class IntefaceTP extends javax.swing.JFrame {
         t.ScanearPortas(1,65500,resultadoScanner); //primeira porta, ultima porta, resultados
        
 }
+    
+    public void Sair(){
+        System.exit(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,7 +151,7 @@ public class IntefaceTP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        Sair();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
