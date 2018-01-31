@@ -3,22 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,43 +25,19 @@ public class IntefaceTP extends javax.swing.JFrame {
     }
     
     
-    public static void Scanner(){
+    public static void Scanner() throws InterruptedException, ExecutionException{
         ip = ipInformado.getText();
+        //ip = "localhost";
+        resultadoScanner.setText(" ");
+        ScanResultado t = new ScanResultado(ip);
+        t.LerDados();
+        t.ScanearPortas(1,65500,resultadoScanner); //primeira porta, ultima porta, resultados
        
-        Runnable run1 = new Runnable() {
-            @Override
-            public void run() {
-                Port port = new Port();
-                try {              
-                    port.ScannerPortas(ip,port.ArmazPortConhe(),resultadoScanner);
-                } catch (IOException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        Runnable run2 = new Runnable() {
-            @Override
-            public void run() {
-                Port port = new Port();
-             
-                try {
-                    port.ScannerPortas(ip,port.ArmazPortReg(),resultadoScanner);
-                } catch (IOException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                }           
-            }
-        };
-        new Thread(run1).start();
-        new Thread(run2).start();    
 }
+    
+    public void Sair(){
+        System.exit(0);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -188,11 +151,15 @@ public class IntefaceTP extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        Sair();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Scanner();
+        try {
+            Scanner();
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
