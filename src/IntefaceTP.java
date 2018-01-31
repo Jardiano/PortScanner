@@ -38,42 +38,13 @@ public class IntefaceTP extends javax.swing.JFrame {
     }
     
     
-    public static void Scanner(){
+    public static void Scanner() throws InterruptedException, ExecutionException{
         ip = ipInformado.getText();
+        //ip = "localhost";
+        ScanResultado t = new ScanResultado(ip);
+        t.LerDados();
+        t.ScanearPortas(resultadoScanner);
        
-        Runnable run1 = new Runnable() {
-            @Override
-            public void run() {
-                Port port = new Port();
-                try {              
-                    port.ScannerPortas(ip,port.ArmazPortConhe(),resultadoScanner);
-                } catch (IOException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-        Runnable run2 = new Runnable() {
-            @Override
-            public void run() {
-                Port port = new Port();
-             
-                try {
-                    port.ScannerPortas(ip,port.ArmazPortReg(),resultadoScanner);
-                } catch (IOException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
-                }           
-            }
-        };
-        new Thread(run1).start();
-        new Thread(run2).start();    
 }
 
     /**
@@ -192,7 +163,11 @@ public class IntefaceTP extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Scanner();
+        try {
+            Scanner();
+        } catch (InterruptedException | ExecutionException ex) {
+            Logger.getLogger(IntefaceTP.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
