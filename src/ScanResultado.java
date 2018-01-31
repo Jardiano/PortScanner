@@ -126,11 +126,9 @@ public class ScanResultado{
         final int timeout = 200;
         final List<Future<PortData>> todasAsPortas = new ArrayList<>();
         for (int port = 1; port <= 65535; port++) { //testa todas as portas se estao ou nao abertas, gerando uma lista desses resultados
-       //     todasAsPortas.add(portIsOpen(es, port, timeout));
+             todasAsPortas.add(portIsOpen(es, port, timeout));
         }
-        for (int port = 631; port <= 632; port++) { //testa todas as portas se estao ou nao abertas, gerando uma lista desses resultados
-            todasAsPortas.add(portIsOpen(es, port, timeout));
-        }
+        
         es.awaitTermination(200L, TimeUnit.MILLISECONDS);
   
         String resultadoParcial;
