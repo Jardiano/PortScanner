@@ -28,9 +28,10 @@ public class IntefaceTP extends javax.swing.JFrame {
     public static void Scanner() throws InterruptedException, ExecutionException{
         ip = ipInformado.getText();
         //ip = "localhost";
+        resultadoScanner.setText(" ");
         ScanResultado t = new ScanResultado(ip);
         t.LerDados();
-        t.ScanearPortas(resultadoScanner);
+        t.ScanearPortas(628,632,resultadoScanner); //primeira porta, ultima porta, resultados
        
 }
 
