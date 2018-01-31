@@ -29,8 +29,8 @@ import jxl.read.biff.BiffException;
  */
 public class ScanResultado{
 
-    private String ip;
-    private List<PortData> listaPortas = new ArrayList<PortData>();
+    private final String ip;
+    private List<PortData> listaPortas = new ArrayList<>();
     private int openPorts = 0;
 
     public ScanResultado(String ip) {
